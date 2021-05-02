@@ -1,8 +1,8 @@
 {
-  "title": "Next.js Starter Blog",
-  "author": "Tails Azimuth",
-  "headerTitle": "TailwindBlog",
-  "description": "A blog created with Next.js and Tailwind.css",
+  "title": "Letspy",
+  "author": "Wenzhi",
+  "headerTitle": "Your daily Python tips",
+  "description": "A blog dedicated to interesting yet simple python applications",
   "language": "en-us",
   "siteUrl": "https://tailwind-nextjs-starter-blog.vercel.app",
   "siteRepo": "https://github.com/timlrx/tailwind-nextjs-starter-blog",

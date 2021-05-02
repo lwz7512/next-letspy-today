@@ -22,14 +22,20 @@ export default function Home({ posts }) {
         url={siteMetadata.siteUrl}
       />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
+        {/* banner */}
+        <div className="pt-6 pb-8 space-y-2 md:space-y-5 relative">
+          <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '90%'}}>
+            <h1 className="pt-6 md:pb-6 text-2xl uppercase font-extrabold leading-9 tracking-tight text-blue-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 ">
+            {siteMetadata.title}
+            </h1>
+            <p 
+              className="text-blue-300 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
+              {siteMetadata.description}
+            </p>
+          </div>
+          <img src="/static/images/ocean-md.jpg" />
         </div>
+        {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
