@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 
 import Link from '@/components/Link'
 import { PageSeo } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
-import { useTheme } from 'next-themes'
 
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -18,16 +17,8 @@ export async function getStaticProps() {
 
 export default function Home({ posts }) {
 
-  const { theme, setTheme } = useTheme()
+  const isNight = new Date().getHours()>19 || new Date().getHours() < 5;
   
-  // useEffect(() => {
-  //   console.log('>>> theme: ' + theme);
-  //   console.log('>>> hours: ' + new Date().getHours())
-  //   const mode = new Date().getHours()>19 ? 'dark' : 'light'
-  //   setTheme(mode)
-    
-  // }, [])
-
   return (
     <>
       <PageSeo
@@ -47,8 +38,8 @@ export default function Home({ posts }) {
               {siteMetadata.description}
             </p>
           </div>
-          {theme==='dark' && <img src="/static/images/night-md.jpg"/>}
-          {theme!=='dark' && <img src="/static/images/ocean-md.jpg"/>}
+          {isNight && <img src="/static/images/night-md.jpg"/>}
+          {!isNight && <img src="/static/images/ocean-md.jpg"/>}
         </div>
         {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
