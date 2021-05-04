@@ -8,12 +8,12 @@ const ThemeSwitch = () => {
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
 
-  useEffect(() => {
-    if(theme == 'null') {
-      const mode = new Date().getHours()>19 ? 'dark' : 'light'
-      setTheme(mode)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(theme == 'null') {
+  //     const mode = new Date().getHours()>19 ? 'dark' : 'light'
+  //     setTheme(mode)
+  //   }
+  // }, [])
 
   return (
     <button

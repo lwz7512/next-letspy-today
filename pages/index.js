@@ -19,16 +19,14 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
 
   const { theme, setTheme } = useTheme()
-
-  console.log(theme)
   
-  useEffect(() => {
-    console.log('>>> theme: ' + theme);
-    console.log('>>> hours: ' + new Date().getHours())
-    const mode = new Date().getHours()>19 ? 'dark' : 'light'
-    setTheme(mode)
+  // useEffect(() => {
+  //   console.log('>>> theme: ' + theme);
+  //   console.log('>>> hours: ' + new Date().getHours())
+  //   const mode = new Date().getHours()>19 ? 'dark' : 'light'
+  //   setTheme(mode)
     
-  }, [])
+  // }, [])
 
   return (
     <>
