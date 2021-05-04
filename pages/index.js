@@ -19,6 +19,8 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
 
   const { theme, setTheme } = useTheme()
+
+  console.log(theme)
   
   useEffect(() => {
     console.log('>>> theme: ' + theme);
