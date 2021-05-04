@@ -47,7 +47,7 @@ export default function Home({ posts }) {
             </p>
           </div>
           {theme=='dark' && <img src="/static/images/night-md.jpg"/>}
-          {theme=='light' && <img src="/static/images/ocean-md.jpg"/>}
+          {theme!='dark' && <img src="/static/images/ocean-md.jpg"/>}
         </div>
         {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
