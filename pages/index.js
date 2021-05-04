@@ -1,8 +1,11 @@
+import React, { useEffect } from 'react'
+
 import Link from '@/components/Link'
 import { PageSeo } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { useTheme } from 'next-themes'
 
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -14,6 +17,16 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
+
+  const { theme, setTheme } = useTheme()
+  
+  useEffect(() => {
+    if(theme == 'null') {
+      const mode = new Date().getHours()>19 ? 'dark' : 'light'
+      setTheme(mode)
+    }
+  }, [])
+
   return (
     <>
       <PageSeo
@@ -24,7 +37,7 @@ export default function Home({ posts }) {
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {/* banner */}
         <div className="pt-6 pb-8 space-y-2 md:space-y-5 relative">
-          <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '90%'}}>
+          <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '80%'}}>
             <h1 className="pt-6 md:pb-6 text-2xl uppercase font-extrabold leading-9 tracking-tight text-blue-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 ">
             {siteMetadata.title}
             </h1>
@@ -33,7 +46,8 @@ export default function Home({ posts }) {
               {siteMetadata.description}
             </p>
           </div>
-          <img src="/static/images/ocean-md.jpg" />
+          {theme=='dark' && <img src="/static/images/night-md.jpg"/>}
+          {theme=='light' && <img src="/static/images/ocean-md.jpg"/>}
         </div>
         {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
