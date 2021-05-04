@@ -21,10 +21,11 @@ export default function Home({ posts }) {
   const { theme, setTheme } = useTheme()
   
   useEffect(() => {
-    if(theme == 'null') {
-      const mode = new Date().getHours()>19 ? 'dark' : 'light'
-      setTheme(mode)
-    }
+    console.log('>>> theme: ' + theme);
+    console.log('>>> hours: ' + new Date().getHours())
+    const mode = new Date().getHours()>19 ? 'dark' : 'light'
+    setTheme(mode)
+    
   }, [])
 
   return (
