@@ -18,6 +18,8 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
 
   const isNight = new Date().getHours()>19 || new Date().getHours() < 5;
+  console.log(isNight)
+  console.log(new Date().getHours())
   
   return (
     <>
