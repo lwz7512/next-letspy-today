@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Link from '@/components/Link'
 import { PageSeo } from '@/components/SEO'
@@ -17,9 +17,12 @@ export async function getStaticProps() {
 
 export default function Home({ posts }) {
 
-  const isNight = new Date().getHours()>19 || new Date().getHours() < 5;
-  console.log(isNight)
-  console.log(new Date().getHours())
+  const [isNight, setIsNight] = useState(false)
+
+  useEffect(() => {
+    const darkMode = new Date().getHours()>19 || new Date().getHours() < 5;
+    setIsNight(darkMode)
+  }, []);
   
   return (
     <>
