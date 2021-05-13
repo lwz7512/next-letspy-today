@@ -39,7 +39,7 @@ export default function Home({ posts }) {
             {siteMetadata.title}
             </h1>
             <p 
-              className="text-blue-300 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
+              className="text-blue-500 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
               {siteMetadata.description}
             </p>
           </div>
