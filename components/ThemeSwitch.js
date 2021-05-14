@@ -9,7 +9,7 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   useEffect(() => {
-    const darkMode = new Date().getHours()>19 || new Date().getHours() < 5;
+    const darkMode = new Date().getHours()>18 || new Date().getHours() < 5;
     const mode = darkMode ? 'dark' : 'light'
     setTheme(mode)
   }, [])
