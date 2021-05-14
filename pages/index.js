@@ -33,18 +33,18 @@ export default function Home({ posts }) {
       />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {/* banner */}
-        <div className="pt-6 pb-8 space-y-2 md:space-y-5 relative">
-          <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '80%'}}>
+        <div className="pt-6 pb-8 space-y-2 md:space-y-5 relative hero">
+          <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '70%'}}>
             <h1 className="pt-6 md:pb-6 text-2xl uppercase font-extrabold leading-9 tracking-tight text-blue-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 ">
             {siteMetadata.title}
             </h1>
             <p 
-              className="text-blue-500 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
+              className="text-blue-200 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
               {siteMetadata.description}
             </p>
           </div>
           {isNight && <img src="/static/images/night-md.jpg"/>}
-          {!isNight && <img src="/static/images/ocean-md.jpg"/>}
+          {!isNight && <img src="/static/images/loake-md.jpg"/>}
         </div>
         {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
