@@ -27,9 +27,6 @@ export default function Home({ posts }) {
     setIsNight(darkMode)
   }, []);
 
-  if(!mounted) return (
-    <img src="/static/images/lets_ph_md.jpg" />
-  )
   
   return (
     <>
@@ -50,6 +47,7 @@ export default function Home({ posts }) {
               {siteMetadata.description}
             </p>
           </div>
+          {!mounted && <img src="/static/images/lets_ph_md.jpg" />}
           {mounted && isNight && <img src="/static/images/night-md.jpg"/>}
           {mounted && !isNight && <img src="/static/images/ocean-md.jpg"/>}
         </div>
