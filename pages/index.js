@@ -30,7 +30,7 @@ export default function Home({ posts }) {
         description={siteMetadata.description}
         url={siteMetadata.siteUrl}
       />
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+      <div>
         {/* banner */}
         <div className="space-y-2 md:space-y-5 relative hero">
           <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '70%'}}>
