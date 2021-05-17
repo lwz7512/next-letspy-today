@@ -16,10 +16,10 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-  const darkMode = new Date().getHours()>18 || new Date().getHours() < 5;
-  const [isNight, setIsNight] = useState(darkMode)
+  const [isNight, setIsNight] = useState(false)
 
   useEffect(() => {
+    const darkMode = new Date().getHours()>18 || new Date().getHours() < 5;
     setIsNight(darkMode)
   }, []);
   
@@ -38,7 +38,7 @@ export default function Home({ posts }) {
             {siteMetadata.title}
             </h1>
             <p 
-              className="text-blue-200 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
+              className="text-center text-blue-200 text-xs md:text-xl font-extrabold leading-7 dark:text-gray-400 uppercase my-6 px-2" >
               {siteMetadata.description}
             </p>
           </div>
