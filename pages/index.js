@@ -16,13 +16,12 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-  const [isNight, setIsNight] = useState(false)
+  const darkMode = new Date().getHours()>18 || new Date().getHours() < 5;
+  const [isNight, setIsNight] = useState(darkMode)
 
   useEffect(() => {
-    const darkMode = new Date().getHours()>18 || new Date().getHours() < 5;
     setIsNight(darkMode)
   }, []);
-
   
   return (
     <>
@@ -43,8 +42,8 @@ export default function Home({ posts }) {
               {siteMetadata.description}
             </p>
           </div>
-          {isNight && <img src="/static/images/night-md.jpg"/>}
-          {!isNight && <img src="/static/images/loake-md.jpg"/>}
+          {isNight && <img src="/static/images/night-md.jpg" className="desaturate"/>}
+          {!isNight && <img src="/static/images/loake-md.jpg" className="desaturate"/>}
         </div>
         {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
