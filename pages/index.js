@@ -1,27 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import Link from '@/components/Link'
 import { PageSeo } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+import ImageWithCover from '@/components/image-with-cover'
 
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 
+// build static data first
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
 
-  return { props: { posts } }
+  const sharp = require('sharp');
+  const buffer = await sharp('./public/static/images/lets_ph_md.jpg')
+    .resize({width: 200}).jpeg({quality: 60}).toBuffer()
+  const base64Str = buffer.toString('base64')
+  const imgData = `data:image/jpg;base64,${base64Str}`
+
+  return { 
+    props: { 
+      posts,
+      imgPlaceHolderStr: imgData,
+    } 
+  }
 }
 
-export default function Home({ posts }) {
-  const [isNight, setIsNight] = useState(false)
-
-  useEffect(() => {
-    const darkMode = new Date().getHours()>18 || new Date().getHours() < 5;
-    setIsNight(darkMode)
-  }, []);
+// render view content
+export default function Home({ posts, imgPlaceHolderStr }) {
   
   return (
     <>
@@ -33,7 +41,7 @@ export default function Home({ posts }) {
       <div>
         {/* banner */}
         <div className="space-y-2 md:space-y-5 relative hero">
-          <div className="absolute h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '70%'}}>
+          <div className="absolute z-10 h-full w-full flex top-0 left-0 items-center justify-center flex-col pt-10" style={{height: '70%'}}>
             <h1 className="pt-6 md:pb-6 text-2xl uppercase font-extrabold leading-9 tracking-tight text-blue-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 ">
             {siteMetadata.title}
             </h1>
@@ -42,8 +50,13 @@ export default function Home({ posts }) {
               {siteMetadata.description}
             </p>
           </div>
-          {isNight && <img src="/static/images/night-md.jpg" className="desaturate"/>}
-          {!isNight && <img src="/static/images/loake-md.jpg" className="desaturate"/>}
+          {/* hero image */}
+          <ImageWithCover
+            coverImgStr={imgPlaceHolderStr}
+            imgSrc="/static/images/pyramid_md.jpg"
+            imgNight="/static/images/night-md.jpg"
+            altName="letspy_hero"
+          />
         </div>
         {/* end of banner */}
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
