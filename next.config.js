@@ -1,3 +1,15 @@
+global.dummy = 'OK'
+
+const generateHeroImgPlaceholder = async (imgPath) => {
+  console.log('>>> to generate hero placeholder...')
+  const sharp = require('sharp')
+  const buffer = await sharp(imgPath)
+    .resize({width: 200}).jpeg({quality: 60}).toBuffer()
+  const base64Str = buffer.toString('base64')
+  const imgData = `data:image/jpg;base64,${base64Str}`
+  global.heroImgPlaceholder = imgData
+}
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -39,3 +51,6 @@ module.exports = withBundleAnalyzer({
     return config
   },
 })
+
+// prepare placeholder image, saved to the global object
+generateHeroImgPlaceholder('./public/static/images/lets_ph_md.jpg')

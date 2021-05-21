@@ -14,16 +14,10 @@ const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
 
-  const sharp = require('sharp');
-  const buffer = await sharp('./public/static/images/lets_ph_md.jpg')
-    .resize({width: 200}).jpeg({quality: 60}).toBuffer()
-  const base64Str = buffer.toString('base64')
-  const imgData = `data:image/jpg;base64,${base64Str}`
-
   return { 
     props: { 
       posts,
-      imgPlaceHolderStr: imgData,
+      imgPlaceHolderStr: global['heroImgPlaceholder'],
     } 
   }
 }
