@@ -1,5 +1,7 @@
-global.dummy = 'OK'
-
+/**
+ * write hero image base64 string to siteMetadata.json
+ * @param {string} imgPath 
+ */
 const generateHeroImgPlaceholder = async (imgPath) => {
   console.log('>>> to generate hero placeholder...')
   const sharp = require('sharp')
@@ -7,7 +9,10 @@ const generateHeroImgPlaceholder = async (imgPath) => {
     .resize({width: 200}).jpeg({quality: 60}).toBuffer()
   const base64Str = buffer.toString('base64')
   const imgData = `data:image/jpg;base64,${base64Str}`
-  global.heroImgPlaceholder = imgData
+  const fs = require('fs-extra')
+  const siteJson = await fs.readJSON('./data/siteMetadata.json')
+  siteJson['heroImgPlaceholder'] = imgData
+  await fs.writeJSON('./data/siteMetadata.json', siteJson, {spaces: 2})
 }
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({

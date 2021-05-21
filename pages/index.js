@@ -17,7 +17,7 @@ export async function getStaticProps() {
   return { 
     props: { 
       posts,
-      imgPlaceHolderStr: global['heroImgPlaceholder'],
+      imgPlaceHolderStr: siteMetadata['heroImgPlaceholder'],
     } 
   }
 }
