@@ -1,5 +1,5 @@
 import React from 'react'
-
+// import Image from 'next/image'
 import Link from '@/components/Link'
 import { PageSeo } from '@/components/SEO'
 import Tag from '@/components/Tag'
@@ -15,15 +15,12 @@ export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
 
   return { 
-    props: { 
-      posts,
-      imgPlaceHolderStr: siteMetadata['heroImgPlaceholder'],
-    } 
+    props: { posts, } 
   }
 }
 
 // render view content
-export default function Home({ posts, imgPlaceHolderStr }) {
+export default function Home({ posts }) {
   
   return (
     <>
@@ -46,7 +43,7 @@ export default function Home({ posts, imgPlaceHolderStr }) {
           </div>
           {/* hero image */}
           <ImageWithCover
-            coverImgStr={imgPlaceHolderStr}
+            coverImgStr={siteMetadata.heroImgPlaceholder}
             imgSrc="/static/images/pyramid_md.jpg"
             imgNight="/static/images/night-md.jpg"
             altName="letspy_hero"
