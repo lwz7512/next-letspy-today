@@ -1,4 +1,4 @@
-![tailwind-nextjs-banner](./public/static/images/lets_ph_ninjia_md.jpg)
+![tailwind-nextjs-banner](./public/static/images/lets_ph_ninjia.jpg)
 
 # Intro
 
