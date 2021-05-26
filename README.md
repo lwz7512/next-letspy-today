@@ -2,7 +2,7 @@
 
 # Intro
 
-letspy.today website source code based on [tailwind blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+[letspy.today](http://letspy.today) website source code based on [tailwind blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
 
 ### Python application source code
