@@ -3,6 +3,10 @@
   background-color: aliceblue;
 }
 
+.desc-glow {
+  text-shadow: 0 0 2px #0070f3;
+}
+
 @keyframes toColor {
   0%    { -webkit-filter: grayscale(100%); filter: grayscale(100%); }
   25%   { -webkit-filter: grayscale(75%); filter: grayscale(75%); }
